@@ -11,12 +11,39 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Checks if user is an admin
+     *
+     * @return boolean
+     */
+    public function isAdmin()
+    {
+        return ($this->role == 'admin');
+    }
+
+    /**
+     * Checks if user is an editor
+     *
+     * @return boolean
+     */
+    public function isEditor()
+    {
+        return ($this->role == 'editor');
+    }
+
+    /**
+     * Options for user roles
+     *
+     * @var array
+     */
+    public static  $roles = ['admin', 'editor', 'participant'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role',
     ];
 
     /**
