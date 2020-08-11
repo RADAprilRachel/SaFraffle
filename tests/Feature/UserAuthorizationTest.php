@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UserAthenticationTest extends TestCase
+class UserAuthorizationTest extends TestCase
 {
     private function pageAuth($role, $page, $status)
     {
