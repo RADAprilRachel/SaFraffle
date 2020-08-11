@@ -55,6 +55,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @can('viewAny', App\Raffle::class)
+                                        <a class="dropdown-item" href="{{ route('raffles.index') }}">Raffles</a>
+                                    @endcan
                                     @can('viewAny', App\User::class)
                                         <a class="dropdown-item" href="{{ route('users.index') }}">Users</a>
                                     @endcan

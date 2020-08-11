@@ -18,4 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('users', 'UserController');
+Route::resource('raffles', 'RaffleController');
 Route::get('/home', 'HomeController@index')->name('home');
