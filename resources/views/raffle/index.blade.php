@@ -14,15 +14,19 @@
                   <th scope="col">ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Benefactor</th>
+                  <th scope="col">Begin Date</th>
+                  <th scope="col">End Date</th>
                   <th scope="col">Description</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($raffles as $raffle)
-                    <tr onclick="window.location='{{ route('raffles.edit', ['raffle' => $raffle['id']])  }}';">
+                    <tr onclick="window.location='{{ route('raffles.raffle_items.index', ['raffle' => $raffle['id']])  }}';">
                       <th scope="row">{{ $raffle['id'] }}</th>
                       <td>{{ $raffle['name']  }}</td>
                       <td>{{ $raffle['benefactor'] }}</td>
+                      <td>{{ $raffle['begin_date']->format('m/d/Y') }}</td>
+                      <td>{{ $raffle['end_date']->format('m/d/Y')  }}</td>
                       <td>{{ $raffle['description']  }}</td>
                     </tr>
                 @endforeach

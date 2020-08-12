@@ -36,18 +36,18 @@ class RaffleAuthorizationTest extends TestCase
 
     public function testRafflePolicyOnRaffleEditGuest()
     {
-        $response = $this->call('GET', 'raffles/1/edit');
+        $response = $this->call('GET', 'raffles/104/edit');
         $response->assertStatus(403);
     }
 
     public function testRafflePolicyOnRaffleEditEditor()
     {
-        $this->pageAuth('editor', 'raffles/1/edit', 200);
+        $this->pageAuth('editor', 'raffles/104/edit', 200);
     }
 
     public function testRafflePolicyOnRaffleEditAdmin()
     {
-        $this->pageAuth('admin', 'raffles/1/edit', 200);
+        $this->pageAuth('admin', 'raffles/104/edit', 200);
     }
 
 }

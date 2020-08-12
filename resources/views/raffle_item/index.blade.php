@@ -8,7 +8,7 @@
         <div class="card-header bg-dark text-light">{{ $raffle['name'] }}</div>
           <div class="card-body bg-secondary">
             <form method="POST" action="{{ route('raffles.update', ['raffle' => $raffle['id']]) }}">
-	    @method('PUT')
+            @method('PUT')
             @csrf
               <div class="form-group row text-light">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -47,6 +47,37 @@
               </div>
             </form>
           </div>
+        </div>
+       <div class="card">
+        <div class="card-header bg-dark text-light">Raffle Items</div>
+          <div class="card-body bg-secondary">
+            <div class="table-responsive">
+              <table class="table table-hover table-sm table-dark">
+                <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Donor</th>
+                  <th scope="col">Value</th>
+                  <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach ($raffleItems as $raffleItem)
+                    <tr onclick="window.location='{{ route('raffles.raffle_items.edit', ['raffle' => $raffle['id'],'raffleItem' => $raffleItem['id']])  }}';">
+                      <th scope="row">{{ $raffleItem['id'] }}</th>
+                      <td>{{ $raffleItem['name']  }}</td>
+                      <td>{{ $raffleItem['donor'] }}</td>
+                      <td>{{ $raffleItem['value'] }}</td>
+                      <td>{{ $raffleItem['description']  }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+              </table>
+              <button class="btn btn-primary" onclick="location.href='{{ route('raffles.raffle_items.create', $raffle) }}';">+</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

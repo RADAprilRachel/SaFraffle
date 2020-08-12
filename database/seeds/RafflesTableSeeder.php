@@ -16,10 +16,13 @@ class RafflesTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
          for ($i = 0; $i < 50; $i++) {
+            $begin_date = $faker->date;
              Raffle::create([
                  'name' => $faker->sentence,
                  'benefactor' => $faker->company,
                  'description' => $faker->paragraph,
+                 'begin_date' => $begin_date,
+                 'end_date' => date('Y-m-d', strtotime($begin_date. ' + 14 days')),
              ]);
         }
     }

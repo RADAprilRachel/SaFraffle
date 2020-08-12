@@ -11,4 +11,9 @@ class Raffle extends Model
         return $this->hasMany(RaffleItem::class);
     }
 
+    protected $casts = [
+    'begin_date' => 'date:Y-m-d',
+    'end_date' => 'date:Y-m-d',
+    ];
+
 }

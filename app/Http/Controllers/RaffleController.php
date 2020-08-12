@@ -64,14 +64,15 @@ class RaffleController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', Raffle::class);
-        $data = $request->all();
         $rules = [
 	    'name' => 'required|string|max:100|unique:raffles,name',
 	    'benefactor' => 'required|string|max:100',
 	    'description' => 'string',
+	    'begin_date' => 'date',
+	    'end_date' => 'date|after:'.$request->begin_date,
         ];
 
-        $validator = $this->validator->make($data, $rules);
+        $validator = $this->validator->make($request->all(), $rules);
 
         if ($validator->fails()) {
 		return $validator->messages();
@@ -81,11 +82,12 @@ class RaffleController extends Controller
             $raffle->name = $request['name'];
             $raffle->benefactor = $request['benefactor'];
             $raffle->description = $request['description'];
+            $raffle->begin_date = $request['begin_date'];
+            $raffle->end_date = $request['end_date'];
             $raffle->save();
         }
 
-	$raffles = Raffle::all();
-	return $this->view->make('raffle.index', compact('raffles'));
+	return redirect()->route('raffles.raffle_items.index', ['raffle' => $raffle['id']]);
     }
 
     /**
@@ -123,15 +125,15 @@ class RaffleController extends Controller
     {
         $this->authorize('update', $raffle);
 
-        $id = $raffle->id;
-        $data = $request->all();
         $rules = [
-	    'name' => 'required|string|max:100|unique:raffles,name,'.$id,
+	    'name' => 'required|string|max:100|unique:raffles,name,'.$raffle->id,
 	    'benefactor' => 'required|string|max:100',
 	    'description' => 'string',
+	    'begin_date' => 'date',
+	    'end_date' => 'date|after:'.$request->begin_date,
         ];
 
-        $validator = $this->validator->make($data, $rules);
+        $validator = $this->validator->make($request->all(), $rules);
         if ($validator->fails()) {
 		return $validator->messages();
 	}
@@ -139,10 +141,11 @@ class RaffleController extends Controller
             ($raffle->name == $request['name']) ?: $raffle->name = $request['name'];
             ($raffle->benefactor == $request['benefactor']) ?: $raffle->benefactor = $request['benefactor'];
             ($raffle->description == $request['description']) ?: $raffle->description = $request['description'];
+            ($raffle->begin_date == $request['begin_date']) ?: $raffle->begin_date = $request['begin_date'];
+            ($raffle->end_date == $request['end_date']) ?: $raffle->end_date = $request['end_date'];
             $raffle->save();
         }
-	$raffles = Raffle::all();
-	return $this->view->make('raffle.index', compact('raffles'));
+	return redirect()->route('raffles.raffle_items.index', ['raffle' => $raffle['id']]);
     }
 
     /**
