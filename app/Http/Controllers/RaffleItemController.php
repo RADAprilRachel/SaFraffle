@@ -91,7 +91,7 @@ class RaffleItemController extends Controller
 
         $raffleItems = RaffleItem::all();
 
-        return redirect()->route('raffles.raffle_items.index', $raffle);
+        return redirect()->route('raffles.raffleItems.index', $raffle);
     }
 
     /**
@@ -151,7 +151,7 @@ class RaffleItemController extends Controller
 
         $raffleItems = RaffleItem::all();
 
-        return redirect()->route('raffles.raffle_items.index', $raffle);
+        return redirect()->route('raffles.raffleItems.index', $raffle);
     }
 
     /**

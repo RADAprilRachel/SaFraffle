@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header bg-dark text-light">{{ $raffleItem['name'],  }}</div>
           <div class="card-body bg-secondary">
-            <form method="POST" action="{{ route('raffles.raffle_items.update', [$raffle, $raffleItem]) }}">
+            <form method="POST" action="{{ route('raffles.raffleItems.update', [$raffle, $raffleItem]) }}">
             @method('PUT')
             @csrf
               <div class="form-group row text-light">

@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header bg-dark text-light">New Raffle Item</div>
           <div class="card-body bg-secondary">
-            <form method="POST" action="{{ route('raffles.raffle_items.store', $raffle) }}">
+            <form method="POST" action="{{ route('raffles.raffleItems.store', $raffle) }}">
             @csrf
               <div class="form-group row text-light">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>

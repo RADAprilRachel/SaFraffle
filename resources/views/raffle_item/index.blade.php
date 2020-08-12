@@ -64,7 +64,7 @@
                 </thead>
                 <tbody>
                 @foreach ($raffleItems as $raffleItem)
-                    <tr onclick="window.location='{{ route('raffles.raffle_items.edit', ['raffle' => $raffle['id'],'raffleItem' => $raffleItem['id']])  }}';">
+                    <tr onclick="window.location='{{ route('raffles.raffleItems.edit', ['raffle' => $raffle['id'],'raffleItem' => $raffleItem['id']])  }}';">
                       <th scope="row">{{ $raffleItem['id'] }}</th>
                       <td>{{ $raffleItem['name']  }}</td>
                       <td>{{ $raffleItem['donor'] }}</td>
@@ -74,7 +74,7 @@
                 @endforeach
                 </tbody>
               </table>
-              <button class="btn btn-primary" onclick="location.href='{{ route('raffles.raffle_items.create', $raffle) }}';">+</button>
+              <button class="btn btn-primary" onclick="location.href='{{ route('raffles.raffleItems.create', $raffle) }}';">+</button>
             </div>
           </div>
         </div>

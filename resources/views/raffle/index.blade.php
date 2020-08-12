@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                 @foreach ($raffles as $raffle)
-                    <tr onclick="window.location='{{ route('raffles.raffle_items.index', ['raffle' => $raffle['id']])  }}';">
+                    <tr onclick="window.location='{{ route('raffles.raffleItems.index', ['raffle' => $raffle['id']])  }}';">
                       <th scope="row">{{ $raffle['id'] }}</th>
                       <td>{{ $raffle['name']  }}</td>
                       <td>{{ $raffle['benefactor'] }}</td>

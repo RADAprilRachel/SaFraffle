@@ -87,7 +87,7 @@ class RaffleController extends Controller
             $raffle->save();
         }
 
-	return redirect()->route('raffles.raffle_items.index', ['raffle' => $raffle['id']]);
+	return redirect()->route('raffles.raffleItems.index', ['raffle' => $raffle['id']]);
     }
 
     /**
@@ -145,7 +145,7 @@ class RaffleController extends Controller
             ($raffle->end_date == $request['end_date']) ?: $raffle->end_date = $request['end_date'];
             $raffle->save();
         }
-	return redirect()->route('raffles.raffle_items.index', ['raffle' => $raffle['id']]);
+	return redirect()->route('raffles.raffleItems.index', ['raffle' => $raffle['id']]);
     }
 
     /**

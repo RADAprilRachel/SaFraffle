@@ -19,5 +19,5 @@ Auth::routes();
 
 Route::resource('users', 'UserController');
 Route::resource('raffles', 'RaffleController');
-Route::resource('raffles.raffle_items', 'RaffleItemController');
+Route::resource('raffles.raffleItems', 'RaffleItemController');
 Route::get('/home', 'HomeController@index')->name('home');
