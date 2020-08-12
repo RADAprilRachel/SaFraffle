@@ -16,4 +16,9 @@ class Raffle extends Model
     'end_date' => 'date:Y-m-d',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
 }

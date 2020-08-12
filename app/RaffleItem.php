@@ -10,4 +10,9 @@ class RaffleItem extends Model
     {
         $this->belongsTo(Raffle::class);
     }
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }
