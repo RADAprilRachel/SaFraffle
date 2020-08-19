@@ -48,7 +48,8 @@
             </form>
           </div>
         </div>
-       <div class="card">
+      </div>
+      <div class="card">
         <div class="card-header bg-dark text-light">Raffle Items</div>
           <div class="card-body bg-secondary">
             <div class="table-responsive">
