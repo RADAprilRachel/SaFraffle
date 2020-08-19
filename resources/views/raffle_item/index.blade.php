@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-sm-8">
       <div class="card">
         <div class="card-header bg-dark text-light">{{ $raffle['name'] }}</div>
           <div class="card-body bg-secondary">
@@ -40,6 +40,15 @@
                   <input type="date" name="end_date" class="form-control" id="end_date" value="{{ $raffle['end_date']->format('Y-m-d') }}">
                 </div>
               </div>
+              <div class="form-group row text-light">
+                <label for="ticket_cost" class="col-sm-2 col-form-label">Ticket Cost</label>
+                <div class="col-sm-10 input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number" min="0" max="255" step="0.05" name="ticket_cost" class="form-control" id="ticket_cost" value="{{ $raffle['ticket_cost'] }}">
+                </div>
+              </div>
               <div class="form-group row">
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-primary">Update</button>
@@ -49,6 +58,10 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-5">
       <div class="card">
         <div class="card-header bg-dark text-light">Raffle Items</div>
           <div class="card-body bg-secondary">

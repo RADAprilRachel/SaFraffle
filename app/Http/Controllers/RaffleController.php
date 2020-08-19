@@ -70,6 +70,7 @@ class RaffleController extends Controller
 	    'description' => 'string',
 	    'begin_date' => 'date',
 	    'end_date' => 'date|after:'.$request->begin_date,
+	    'ticket_cost' => 'numeric|max:255|min:0',
         ];
 
         $validator = $this->validator->make($request->all(), $rules);
@@ -84,6 +85,7 @@ class RaffleController extends Controller
             $raffle->description = $request['description'];
             $raffle->begin_date = $request['begin_date'];
             $raffle->end_date = $request['end_date'];
+            $raffle->ticket_cost = $request['ticket_cost'];
             $raffle->save();
         }
 
@@ -131,6 +133,7 @@ class RaffleController extends Controller
 	    'description' => 'string',
 	    'begin_date' => 'date',
 	    'end_date' => 'date|after:'.$request->begin_date,
+	    'ticket_cost' => 'numeric|max:255|min:0',
         ];
 
         $validator = $this->validator->make($request->all(), $rules);
@@ -143,6 +146,7 @@ class RaffleController extends Controller
             ($raffle->description == $request['description']) ?: $raffle->description = $request['description'];
             ($raffle->begin_date == $request['begin_date']) ?: $raffle->begin_date = $request['begin_date'];
             ($raffle->end_date == $request['end_date']) ?: $raffle->end_date = $request['end_date'];
+            ($raffle->ticket_cost == $request['ticket_cost']) ?: $raffle->ticket_cost = $request['ticket_cost'];
             $raffle->save();
         }
 	return redirect()->route('raffles.raffleItems.index', ['raffle' => $raffle['id']]);

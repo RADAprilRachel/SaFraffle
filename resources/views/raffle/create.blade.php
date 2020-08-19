@@ -39,6 +39,15 @@
                   <input type="date" name="end_date" class="form-control" id="end_date">
                 </div>
               </div>
+              <div class="form-group row text-light">
+                <label for="ticket_cost" class="col-sm-2 col-form-label">Ticket Cost</label>
+                <div class="col-sm-10 input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="number" min="0" max="255" step="0.05" name="ticket_cost" class="form-control" id="ticket_cost" value="5.00">
+                </div>
+              </div>
               <div class="form-group row">
                 <div class="col-sm-10">
                   <button type="submit" class="btn btn-primary">Create</button>

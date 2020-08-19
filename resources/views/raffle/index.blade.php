@@ -17,6 +17,7 @@
                   <th scope="col">Begin Date</th>
                   <th scope="col">End Date</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Ticket Cost</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,7 @@
                       <td>{{ $raffle['begin_date']->format('m/d/Y') }}</td>
                       <td>{{ $raffle['end_date']->format('m/d/Y')  }}</td>
                       <td>{{ $raffle['description']  }}</td>
+                      <td>${{ $raffle['ticket_cost']  }}</td>
                     </tr>
                 @endforeach
                 </tbody>
