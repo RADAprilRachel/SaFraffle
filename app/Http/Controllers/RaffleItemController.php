@@ -6,6 +6,7 @@ use App\RaffleItem;
 use App\Raffle;
 use App\Http\Requests\RaffleItemFormRequest;
 use App\Traits\UploadTrait;
+use App\Traits\ImageFileTrait;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory as View;
 use Illuminate\Contracts\Validation\Factory as Validator;
@@ -13,6 +14,7 @@ use Illuminate\Contracts\Validation\Factory as Validator;
 class RaffleItemController extends Controller
 {
     use UploadTrait;
+    use ImageFileTrait;
     /** 
     * View factory instance
     *
@@ -85,6 +87,7 @@ class RaffleItemController extends Controller
             $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $directory, 'public', $image_name);
             $raffleItem->image = $path;
+            $this->resize($path, 400, 600);
             $raffleItem->save();
         }   
 
@@ -136,6 +139,7 @@ class RaffleItemController extends Controller
             $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $directory, 'public', $image_name);
             $raffleItem->image = $path;
+            $this->resize($path, 400, 600);
         }         
 
         ($raffleItem->name == $request['name']) ?: $raffleItem->name = $request['name'];

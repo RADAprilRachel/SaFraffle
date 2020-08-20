@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Raffle;
 use App\Traits\UploadTrait;
+use App\Traits\ImageFileTrait;
 use App\Http\Requests\RaffleFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory as View;
@@ -12,6 +13,7 @@ use Illuminate\Contracts\Validation\Factory as Validator;
 class RaffleController extends Controller
 {
     use UploadTrait;
+    use ImageFileTrait;
     /**
     * View factory instance
     *
@@ -84,6 +86,7 @@ class RaffleController extends Controller
                 $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
                 $this->uploadOne($image, $directory, 'public', $image_name);
                 $raffle->image = $path;
+                $this->resize($path, 400, 600);
                 $raffle->save();
             }
 	}
@@ -136,6 +139,7 @@ class RaffleController extends Controller
             $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $directory, 'public', $image_name);
             $raffle->image = $path;
+            $this->resize($path, 400, 600);
         }
         ($raffle->name == $request['name']) ?: $raffle->name = $request['name'];
         ($raffle->benefactor == $request['benefactor']) ?: $raffle->benefactor = $request['benefactor'];
