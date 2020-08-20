@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header bg-dark text-light">New Raffle</div>
           <div class="card-body bg-secondary">
-            <form method="POST" action="{{ route('raffles.store') }}">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('raffles.store') }}">
             @csrf
               <div class="form-group row text-light">
                 <label for="name" class="col-sm-2 col-form-label">Name</label>
@@ -48,8 +48,19 @@
                   <input type="number" min="0" max="255" step="0.05" name="ticket_cost" class="form-control" id="ticket_cost" value="5.00">
                 </div>
               </div>
+              <div class="form-group row text-light">
+                <label class="col-sm-2 col-form-label">Header Img</label>
+                <div class="col-sm-10">
+                  <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input" id="custom-file">
+                    <label class="custom-file-label" for="custom-file">Choose Image</label>
+                  </div>
+                </div>
+              </div>
               <div class="form-group row">
                 <div class="col-sm-10">
+                </div>
+                <div class="col-sm-2">
                   <button type="submit" class="btn btn-primary">Create</button>
                 </div>
               </div>

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Raffle;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory as View;
 use Illuminate\Contracts\Validation\Factory as Validator;
 
 class RaffleController extends Controller
 {
+    use UploadTrait;
     /**
     * View factory instance
     *
@@ -71,6 +73,7 @@ class RaffleController extends Controller
 	    'begin_date' => 'date',
 	    'end_date' => 'date|after:'.$request->begin_date,
 	    'ticket_cost' => 'numeric|max:255|min:0',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         $validator = $this->validator->make($request->all(), $rules);
@@ -87,6 +90,15 @@ class RaffleController extends Controller
             $raffle->end_date = $request['end_date'];
             $raffle->ticket_cost = $request['ticket_cost'];
             $raffle->save();
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $image_name = 'raffle_img_'.strval($raffle->id);
+                $directory = '/img/raffle/';
+                $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
+                $this->uploadOne($image, $directory, 'public', $image_name);
+                $raffle->image = $path;
+                $raffle->save();
+            }
         }
 
 	return redirect()->route('raffles.raffleItems.index', ['raffle' => $raffle['id']]);
@@ -134,6 +146,7 @@ class RaffleController extends Controller
 	    'begin_date' => 'date',
 	    'end_date' => 'date|after:'.$request->begin_date,
 	    'ticket_cost' => 'numeric|max:255|min:0',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
 
         $validator = $this->validator->make($request->all(), $rules);
@@ -141,6 +154,14 @@ class RaffleController extends Controller
 		return $validator->messages();
 	}
 	else {
+            if ($request->has('image')) {
+                $image = $request->file('image');
+                $image_name = 'raffle_img_'.strval($raffle->id);
+                $directory = '/img/raffle/';
+                $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
+                $this->uploadOne($image, $directory, 'public', $image_name);
+                $raffle->image = $path;
+            }
             ($raffle->name == $request['name']) ?: $raffle->name = $request['name'];
             ($raffle->benefactor == $request['benefactor']) ?: $raffle->benefactor = $request['benefactor'];
             ($raffle->description == $request['description']) ?: $raffle->description = $request['description'];

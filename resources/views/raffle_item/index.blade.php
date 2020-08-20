@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-header bg-dark text-light">{{ $raffle['name'] }}</div>
           <div class="card-body bg-secondary">
-            <form method="POST" action="{{ route('raffles.update', ['raffle' => $raffle['id']]) }}">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('raffles.update', ['raffle' => $raffle['id']]) }}">
             @method('PUT')
             @csrf
               <div class="form-group row text-light">
@@ -49,8 +49,31 @@
                   <input type="number" min="0" max="255" step="0.05" name="ticket_cost" class="form-control" id="ticket_cost" value="{{ $raffle['ticket_cost'] }}">
                 </div>
               </div>
+              <div class="form-group row text-light">
+                <label class="col-sm-2 col-form-label">Header Img</label>
+                @if ($raffle['image'])
+                <div class="col-sm-4">
+                  <img class="img-thumbnail" src="{{ $raffle['image'] }}">
+                </div>
+                <div class="col-sm-6">
+                  <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input" id="custom-file">
+                    <label class="custom-file-label" for="custom-file">Choose New Image</label>
+                  </div>
+                </div>
+                @else
+                <div class="col-sm-10">
+                  <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input" id="custom-file">
+                    <label class="custom-file-label" for="custom-file">Choose Image</label>
+                  </div>
+                </div>
+                @endif
+              </div>
               <div class="form-group row">
                 <div class="col-sm-10">
+                </div>
+                <div class="col-sm-2">
                   <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </div>
@@ -74,6 +97,7 @@
                   <th scope="col">Donor</th>
                   <th scope="col">Value</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Image</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -84,11 +108,24 @@
                       <td>{{ $raffleItem['donor'] }}</td>
                       <td>{{ $raffleItem['value'] }}</td>
                       <td>{{ $raffleItem['description']  }}</td>
+                      <td>
+                      @if ($raffleItem['image'])
+                      <img class="img-thumbnail" src="{{ $raffleItem['image'] }}">
+                      @else
+                      None
+                      @endif
+                      </td>
                     </tr>
                 @endforeach
                 </tbody>
               </table>
-              <button class="btn btn-primary" onclick="location.href='{{ route('raffles.raffleItems.create', $raffle) }}';">+</button>
+            </div>
+            <div class="row">
+              <div class="col-sm-10">
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-primary" onclick="location.href='{{ route('raffles.raffleItems.create', $raffle) }}';">+</button>
+              </div>
             </div>
           </div>
         </div>
