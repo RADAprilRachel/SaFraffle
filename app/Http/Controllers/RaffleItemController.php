@@ -87,7 +87,7 @@ class RaffleItemController extends Controller
             $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $directory, 'public', $image_name);
             $raffleItem->image = $path;
-            $this->resize($path, 400, 600);
+            $this->resize($path, 600, 600);
             $raffleItem->save();
         }   
 
@@ -139,7 +139,7 @@ class RaffleItemController extends Controller
             $path = '/storage'.$directory . $image_name. '.' . $image->getClientOriginalExtension();
             $this->uploadOne($image, $directory, 'public', $image_name);
             $raffleItem->image = $path;
-            $this->resize($path, 400, 600);
+            $this->resize($path, 600, 600);
         }         
 
         ($raffleItem->name == $request['name']) ?: $raffleItem->name = $request['name'];
