@@ -14,7 +14,7 @@ class RaffleAPIController extends Controller
      */
     public function index()
     {
-        return Raffle::all()->toJson(JSON_PRETTY_PRINT);
+        return response()->json(['data' => Raffle::all()]);
     }
 
     /**
@@ -36,7 +36,7 @@ class RaffleAPIController extends Controller
      */
     public function show(Raffle $raffle)
     {
-        return $raffle->toJson();
+        return response()->json(['data' => $raffle]);
     }
 
     /**

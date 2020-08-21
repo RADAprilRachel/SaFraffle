@@ -35,8 +35,7 @@ class RaffleItemAPIController extends Controller
     public function index(Raffle $raffle)
     {
         $raffleItems = RaffleItem::whereRaffleId($raffle->id)->get();
-        return collect(['raffle'=>$raffle, 'raffle_items'=>$raffleItems])->toJson();
-
+        return response()->json(['data'=>collect(['raffle'=>$raffle, 'raffle_items'=>$raffleItems])]);
     }
 
     /**
