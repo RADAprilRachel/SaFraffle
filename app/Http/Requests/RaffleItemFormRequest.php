@@ -28,7 +28,7 @@ class RaffleItemFormRequest extends FormRequest
             'donor' => 'required|string|max:100',
             'description' => 'string',
             'value' => 'required|numeric|min:0|max:9999.99',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240'
         ];
     }
 }

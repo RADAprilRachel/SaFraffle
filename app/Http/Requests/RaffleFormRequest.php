@@ -30,7 +30,7 @@ class RaffleFormRequest extends FormRequest
             'begin_date' => 'date',
             'end_date' => 'date|after:'.$this->begin_date,
             'ticket_cost' => 'numeric|max:255|min:0',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:10240'
         ];
     }
 
