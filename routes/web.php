@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect()->away('http://www.radet5.com:8080');
+	return view('landing');
 });
 Route::get('admin', function () {
     return view('welcome');
