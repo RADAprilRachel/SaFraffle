@@ -10,3 +10,8 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+resources/js/App.vue
+resources/js/assets/
+resources/js/components/CheckoutForm.vue
+resources/js/components/RaffleDisplay.vue
+resources/js/components/RaffleItemDisplay.vue

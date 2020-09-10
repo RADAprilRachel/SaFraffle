@@ -14,6 +14,15 @@
 Route::get('/', function () {
 	return view('landing');
 });
+
+Route::get('pos', function () {
+    return view('pos_spa');
+});
+
+Route::get('dev', function () {
+    return view('spa');
+});
+
 Route::get('admin', function () {
     return view('welcome');
 });
