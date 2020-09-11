@@ -13,7 +13,7 @@ class PurchaseAPIController extends Controller
         $purchase = new Purchase;
         $purchase->name = $request['contact_data']['customer_name'];
         $purchase->email = $request['contact_data']['customer_email'];
-        $purchase->phone = $request['contact_data']['customer_phone'];
+	$purchase->phone = $request['contact_data']['customer_phone'];
         $purchase->contact_method = $request['contact_data']['contact_method'];
         $purchase->paypal_custom_id = $request['custom_id'];
         $purchase->raffle_id = $request['raffle_id'];

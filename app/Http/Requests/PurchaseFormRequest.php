@@ -28,9 +28,19 @@ class PurchaseFormRequest extends FormRequest
         return [
             'contact_data.customer_name' => 'required|string|max:200',
             'contact_data.customer_email' => 'email',
+	    'contact_data.customer_phone' => 'string',
             'contact_data.contact_method' => 'required|string',
         ];
     }
+    public function messages()
+    {   
+        return [
+            'contact_data.customer_name.max' => 'Must not be longer than 200 characters',
+            'contact_data.customer_email.email' => 'Must be a valid email address',
+            'contact_data.customer_phone.string' => 'Entry for phone number required'
+        ];
+    }
+
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response()->json(['success'=>false,'errors'=>$validator->errors()], 422));
     }
