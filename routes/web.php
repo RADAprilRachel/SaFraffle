@@ -15,6 +15,8 @@ Route::get('/', function () {
 	return view('landing');
 });
 
+Route::get('mail', 'PaymentAPIController@mail');
+
 Route::get('pos', function () {
     return view('pos_spa');
 });
