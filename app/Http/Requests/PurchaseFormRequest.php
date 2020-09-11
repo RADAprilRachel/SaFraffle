@@ -28,7 +28,6 @@ class PurchaseFormRequest extends FormRequest
         return [
             'contact_data.customer_name' => 'required|string|max:200',
             'contact_data.customer_email' => 'email',
-            'contact_data.customer_phone' => 'string',
             'contact_data.contact_method' => 'required|string',
         ];
     }
