@@ -112,6 +112,7 @@
             </form>
           </div>
         </div>
+      <a class="btn btn-primary" href="{{  route('raffles.tickets.index',['raffle' => $raffle['id']])  }}">Print Tickets</a>
       </div>
     </div>
   </div>

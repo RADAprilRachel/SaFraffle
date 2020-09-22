@@ -13,6 +13,7 @@
 </head>
 <div class="container">
   <div class="card-header bg-dark text-light">{{ $raffle['name'] }}</div>
+  <div>{{ $tickets->reduce(function ($acc,$ticket) {return $acc+$ticket['quantity'];})  }} Tickets</div>
 <div>
   <form method="POST" action="{{  route('raffles.tickets.index',['raffle' => $raffle['id']])  }}">
   @csrf
