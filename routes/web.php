@@ -34,4 +34,6 @@ Auth::routes();
 Route::resource('users', 'UserController');
 Route::resource('raffles', 'RaffleController');
 Route::resource('raffles.raffleItems', 'RaffleItemController');
+Route::resource('raffles.tickets', 'TicketController');
+Route::post('raffles/{raffle}/tickets', 'TicketController@search');
 Route::get('/home', 'HomeController@index')->name('home');
