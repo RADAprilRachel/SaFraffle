@@ -8,7 +8,12 @@ class RaffleItem extends Model
 {
     public function raffle()
     {
-        $this->belongsTo(Raffle::class);
+        return $this->belongsTo(Raffle::class);
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 
     protected $hidden = [

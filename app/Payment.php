@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    public function payment()
+    public function purchase()
     {
-        $this->belongsTo(Purchase::class);
+        return $this->belongsTo(Purchase::class);
     }
 }

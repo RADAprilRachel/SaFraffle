@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    public function ticket() {
-        $this->belongsTo(Raffle::class);
-        $this->belongsTo(Purchase::class);
+    public function raffleItem() {
+        Return $this->belongsTo(RaffleItem::class);
+    }
+    public function purchase() {
+        Return $this->belongsTo(Purchase::class);
     }
 }
