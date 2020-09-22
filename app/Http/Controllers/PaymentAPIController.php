@@ -17,13 +17,13 @@ class PaymentAPIController extends Controller
         $payment->purchase_id = $request['purchase_id'];
         $payment->save();
 	$purchase = Purchase::find([$payment->purchase_id])->first();
-	Mail::to($purchase)->send(new PaymentConfirmation($payment));
+	Mail::to($purchase)->bcc('radet5.safaicoffee@gmail.com')->send(new PaymentConfirmation($payment));
         return response()->json(['success'=>true]);
     }
     public function mail() {
-        $payment = Payment::find(1);
+        $payment = Payment::find(6);
 	$purchase = Purchase::find([$payment->purchase_id])->first();
-        Mail::to($purchase)->send(new PaymentConfirmation($payment));
+        Mail::to('radet5.safaicoffee@gmail.com')->send(new PaymentConfirmation($payment));
         return (new PaymentConfirmation($payment))->render();
     }
 }
